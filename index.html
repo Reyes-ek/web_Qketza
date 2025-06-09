@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QKETZA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      /* Fondo optimizado y sin fixed para mejor rendimiento */
+      background-image: url('Fondos/Web_QketZá_fondo_1.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      /* Eliminado background-attachment: fixed; para evitar lag */
+      transition: background-image 0.5s ease-in-out; /* transición suave para cambio de fondo */
+      min-height: 100vh;
+    }
+
+    nav {
+      width: 100%;
+      height: 15vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      flex-wrap: wrap; /* para mejor respuesta en móviles */
+    }
+
+    .logo img {
+      height: 80px;
+    }
+
+    .links {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap; /* para que no haya overflow en móviles */
+      /* Eliminado posicionamiento left negativo para evitar render lag */
+      position: relative;
+      left: 0;
+    }
+
+    .links a {
+      font-size: 1.1rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      /* Usar margin para separación en lugar de left negativo */
+      margin-left: 0;
+      transition: color 0.3s ease;
+    }
+
+    .links a::before {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: magenta;
+      transition: 0.3s;
+    }
+
+    .links a:hover::before {
+      width: 100%;
+    }
+
+    .links a:hover {
+      color: magenta;
+    }
+
+    #contenido {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 10px;
+    }
+
+    iframe {
+      width: 98%;
+      height: 80vh;
+      border: none;
+      /* Añadido para suavizar carga de iframe */
+      transition: opacity 0.3s ease-in-out;
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .links {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      iframe {
+        height: 70vh;
+        width: 95%;
+      }
+
+      nav {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo" data-aos="zoom-in">
+      <a href="#"><img src="IMG/Web_QketZá_Logo.png" alt="Logo QKETZA"></a>
+    </div>
+
+    <div class="links">
+      <a href="#" onclick="cargar('quienes_somos.php', 'Fondos/Web_QketZá_fondo_1.png')">¿QUIENES SOMOS?</a>
+      <a href="#" onclick="cargar('planes_de_diseños.php', 'Fondos/Web_QketZá_fondo_2.png')">PLANES DE DISEÑO</a>
+      <a href="#" onclick="cargar('landing.php', 'Fondos/Web_QketZá_fondo_3.png')">¿LANDING PAGE?</a>
+      <a href="#" onclick="cargar('trabajos.php', 'Fondos/Web_QketZá_fondo_4.png')">NUESTROS TRABAJOS</a>
+      <a href="#" onclick="cargar('contacto.html', 'IMG/fondo3.jpg')">CONTÁCTO</a>
+    </div>
+  </nav>
+
+  <section id="contenido">
+    <iframe id="miIframe" src="quienes_somos.php" loading="lazy"></iframe>
+  </section>
+
+  <script>
+    // Pre-cargar imágenes de fondo para evitar delay al cambiar fondo
+    const imagenesFondo = [
+      'Fondos/Web_QketZá_fondo_1.png',
+      'Fondos/Web_QketZá_fondo_2.png',
+      'Fondos/Web_QketZá_fondo_3.png',
+      'Fondos/Web_QketZá_fondo_4.png',
+      'IMG/fondo3.jpg'
+    ];
+
+    imagenesFondo.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+
+    function cargar(pagina, fondo) {
+      const iframe = document.getElementById("miIframe");
+      iframe.style.opacity = 0; // ocultar iframe para efecto smooth
+      setTimeout(() => {
+        iframe.src = pagina;
+        document.body.style.backgroundImage = `url('${fondo}')`;
+        iframe.style.opacity = 1; // mostrar iframe
+      }, 200); // espera 200ms para efecto transición
+    }
+  </script>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ offset: 0 });
+  </script>
+</body>
+</html>

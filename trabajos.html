@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    font-family: 'Poppins', sans-serif;
+  }
+  .primera-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+    margin-bottom: 1rem;
+  }
+  .titulo {
+    height: 5rem;
+    width: 45rem;
+    margin-left: 0;
+  }
+  .paquetes-container {
+    display: flex;
+    gap: 0; /* sin espacio entre imágenes */
+    padding-left: 10px;
+  }
+  .collage-img {
+    width: 11rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.25s ease;
+    margin-left: -4rem; /* margen negativo para superponer */
+  }
+  .collage-img:first-child {
+    margin-left: 0; /* la primera sin margen negativo */
+  }
+  .collage-img:hover {
+    transform: scale(1.1);
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<section class="primera-section">
+  <img class="titulo" src="Tipografia/Web_QketZá-16.png" alt="Título" />
+</section>
+
+<section class="paquetes-container">
+  <img src="Imagenes/01_a.jpg" alt="Paquete 1" class="collage-img" loading="lazy" />
+  <img src="https://drive.google.com/uc?export=view&id=1fJNOoLOHNt2hHui1USE0WR7IjUXNHAbl" alt="Paquete 1" class="collage-img img1" />
+  <img src="Imagenes/22_Mesa de trabajo 1 copia 2.png" alt="Paquete 3" class="collage-img" loading="lazy" />
+  <img src="Imagenes/22_Mesa de trabajo 1 copia.png" alt="Paquete 4" class="collage-img" loading="lazy" />
+</section>
+
+</body>
+</html>
