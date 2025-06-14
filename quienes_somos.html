@@ -1,32 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    body{
-        overflow: hidden;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qket-Zá | Home</title>
+  <style>
+    * {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      
     }
+
+    body {
+      background-color: transparent;
+      min-height: 100vh;
+    }
+
     #home {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 1rem;
       text-align: center;
-      padding: 0 10px;
+    }
+
+    .scale-container {
+      transform-origin: top center;
+      transition: transform 0.3s ease-in-out;
+      width: 100%;
     }
 
     .main-container {
       max-width: 1200px;
       width: 100%;
+      margin: 0 auto;
     }
 
     .imagen-1 {
-      height: 17rem;
-      width: 60rem;
-      margin-top: -30px;
+      width: 100%;
+      max-width: 960px;
+      height: auto;
+      margin: -30px auto 0;
+      display: block;
+      animation: palpitar 1s infinite;
+            
+    }
+
+    h1 {
+      color: white;
+      font-size: 1.5rem;
+      padding: 0 1rem;
     }
 
     .info-container {
@@ -36,71 +62,78 @@
       margin-top: 2rem;
       flex-wrap: wrap;
       justify-content: center;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      padding: 0 1rem;
     }
 
     .imagen-2 {
       height: 5rem;
       width: auto;
-      left: -40px;
+      animation: palpitar 1s infinite;
     }
-        .imagen-1, .imagen-2:hover {
-        animation: palpitar 1s infinite;
-        transition: box-shadow 0.3s ease-in-out;
-        }
 
-        @keyframes palpitar {
-        0% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.05);
-        }
-        100% {
-            transform: scale(1);
-        }
-        }
+    @keyframes palpitar {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
 
     .texto {
       color: white;
-      font-size: 1.4rem;
-      line-height: 1.4;
+      font-size: 1.2rem;
+      line-height: 1.6;
       max-width: 560px;
-      text-align: left;         /* Alinea el contenido a la izquierda */
-      
+      text-align: left;
     }
 
-    @keyframes blink {
-      50% {
-        opacity: 0;
+    @media (max-width: 768px) {
+      .info-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .texto {
+        text-align: center;
+        font-size: 1rem;
+      }
+
+      h1 {
+        font-size: 1.2rem;
       }
     }
 
-</style>
-<body>
-      
-  <section id="home" class="section">
-    <div class="main-container">
-      <div>
-        <img class="imagen-1" src="Tipografia/Web_QketZá-10.png" alt="" />
-        <h1 style="color: white; margin-top: -30px;">
-          Diseño gráfico, contenido y creatividad con flow para marcas reales
-        </h1>
-      </div>
+    @media (max-width: 480px) {
+      .imagen-2 {
+        height: 4rem;
+      }
 
-      <div class="info-container">
-        <img class="imagen-2" src="Tipografia/Web_QketZá-11.png" alt="" />
-        <p class="texto">
-          En Qket-Zá, diseñamos más que imágenes. Creamos identidad, actitud y conexión con tu público.
-          Logos, contenido, gifs, diseño editorial, diseño y creación de Landing page y más. Sin límite de ideas,
-          con mucho flow.
-        </p>
+      .texto {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section id="home" class="section">
+    <div class="scale-container">
+      <div class="main-container">
+        <div>
+          <img class="imagen-1" src="Tipografia/Web_QketZá-10.png" alt="Qket-Zá logo" />
+          <h1>
+            Diseño gráfico, contenido y creatividad con flow para marcas reales
+          </h1>
+        </div>
+
+        <div class="info-container">
+          <img class="imagen-2" src="Tipografia/Web_QketZá-11.png" alt="Ícono creativo" />
+          <p class="texto">
+            En Qket-Zá, diseñamos más que imágenes. Creamos identidad, actitud y conexión con tu público.
+            Logos, contenido, gifs, diseño editorial, diseño y creación de Landing page y más. Sin límite de ideas,
+            con mucho flow.
+          </p>
+        </div>
       </div>
     </div>
   </section>
-
-
 </body>
 </html>
