@@ -23,7 +23,6 @@
       flex-direction: column;
       align-items: center;
       gap: 1px;
-      overflow: hidden;
       transform: scale(0.80);
     }
 
@@ -137,7 +136,81 @@
     }
 
 
+    /* ========================
+       RESPONSIVE PARA MÓVILES
+       ======================== */
+    @media (max-width: 768px) {
+      body {
+        transform: scale(1);
+        padding: 20px;
+        overflow-x: hidden;
+      }
 
+      .contenedor-principal {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 2%;
+      }
+
+      .imagen-container {
+        justify-content: center;
+      }
+
+      .imagen-container img {
+        width: 100%;
+        height: auto;
+      }
+
+      .texto-container {
+        align-items: center;
+        margin-top: 1rem;
+      }
+
+      .texto-container p {
+        font-size: 1rem;
+      }
+
+      .paquetes-container {
+        margin-top: .2rem;
+      }
+
+      .paquetes-container img.paquetes {
+        margin-left: 0;
+        height: auto;
+      }
+
+        .botones-container {
+          position: static;
+          margin-top: 1rem;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 10px;
+        }
+      .botones-container a button {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+                align-items: center;
+      }
+
+      .tercera-seccion {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .tercera-seccion img {
+        width: 80%;
+        margin-top: 5rem;
+      }
+
+      .tercera-seccion p {
+        font-size: 1rem;
+        max-width: 90%;
+        margin-top: -2px;
+      }
+
+    }
   </style>
 </head>
 <body>
@@ -159,12 +232,20 @@
   <!-- Segunda sección (paquetes) -->
   <section class="paquetes-container">
     <img class="paquetes" src="Imagenes/Web_QketZá_paquetes.png" alt="Imagen de Paquetes">
-    
+
     <div class="botones-container">
-      <a href="#"><button>LO QUIERO</button></a>
-      <a href="#"><button>LO QUIERO</button></a>
-      <a href="#"><button>LO QUIERO</button></a>
+        <a href="https://wa.me/5219992246197?text=Hola%2C%20me%20interesa%20el%20paquete%20b%C3%A1sico%20de%20dise%C3%B1o." target="_blank">
+          <button>BÁSICO</button>
+        </a>
+        <a href="https://wa.me/5219992246197?text=Hola%2C%20estoy%20interesado%20en%20el%20paquete%20Pro%20de%20Qketz%C3%A1." target="_blank">
+          <button>PRO</button>
+        </a>
+        <a href="https://wa.me/5219992246197?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20paquete%20%C3%89lite%2C%20gracias." target="_blank">
+          <button>ÉLITE</button>
+        </a>
     </div>
+
+
   </section>
   <!--Tercera Seción-->
   <section class="tercera-seccion">
@@ -173,7 +254,31 @@
       LOGO (CUENTA COMO 2 DISEÑOS), GIFS, DISEÑOS PARA IMPRESIÓN,
       CONTENIDO PARA REDES SOCIALES, CAMPAÑAS CREATIVAS
     </p>
+
+
   </section>
+<script>
+  function actualizarTextoBotones() {
+    const botones = document.querySelectorAll('.botones-container button');
+    const anchoPantalla = window.innerWidth;
+
+    if (anchoPantalla <= 768) {
+      botones[0].textContent = "BÁSICO";
+      botones[1].textContent = "PRO";
+      botones[2].textContent = "ELITE";
+    } else {
+      botones[0].textContent = "LO QUIERO";
+      botones[1].textContent = "LO QUIERO";
+      botones[2].textContent = "LO QUIERO";
+    }
+  }
+
+  // Ejecutar al cargar
+  actualizarTextoBotones();
+
+  // Ejecutar cada vez que cambia el tamaño de la ventana
+  window.addEventListener('resize', actualizarTextoBotones);
+</script>
 
 
 </body>
