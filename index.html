@@ -84,7 +84,7 @@
   align-items: flex-start; /* Asegura que el iframe se alinee a la parte superior */
   width: 100%;
   padding: 1rem;
-  height: 100%; /* Ocupa toda la altura de la pantalla */
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
   position: relative;
 }
 
@@ -125,8 +125,13 @@ iframe {
       .links a {
         font-size: 2vw; /* Cambia el tamaño de la fuente basado en el ancho del viewport */
       }
+      #contenido {
+        height: calc(99vh - 140px); /* Espacio ajustado para nav en móviles */
+      }
+
       iframe {
-        height: 46rem; /* Ajusta el iframe para que ocupe toda la altura disponible */
+        width: 100vw;
+        height: 99vh;
       }
     }
   </style>
