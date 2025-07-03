@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+<style>
+
+    /* ---------- Estilos generales ---------- */
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: 'Poppins', sans-serif;
+      background-image: url(Fondos/Web_QketZá_fondo_4.png);
+      overflow-x: hidden;
+      zoom: 0.8;
+    }
+
+    * {
+      box-sizing: border-box;
+      scrollbar-width: thin;
+      scrollbar-color: #a100f2 #f0f0f0;
+    }
+
+    .contenido-total {
+      transition: transform 0.4s ease, margin 0.4s ease;
+    }
+
+    /* ---------- Secciones por pantalla ---------- */
+    .pantalla {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .pantalla.activa {
+      display: block;
+    }
+
+    /* ---------- Título principal ---------- */
+    .primera-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .titulo {
+      height: 5rem;
+      width: 45rem;
+    }
+
+    /* ---------- Botón principal ---------- */
+    .seccion-boton {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .seccion-boton-not {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+      display: none; /* versión oculta para móviles */
+    }
+
+    .neon-button {
+      width: 15rem;
+      height: 3rem;
+      background: #a100f2;
+      border: 2px solid #a100f2;
+      border-radius: 30px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 2px #a100f2, 0 0 5px #a100f2;
+      box-shadow: 0 0 4px #a100f2, 0 0 10px rgba(161, 0, 242, 0.4);
+      transition: transform 0.2s;
+    }
+
+    .neon-button img {
+      height: 80px;
+      margin-top: 2px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* ---------- Sección de grupos de imágenes (collage) ---------- */
+    .seccion-grupos {
+      display: flex;
+      justify-content: space-between;
+      gap: 4rem;
+      padding: 2rem 0;
+    }
+
+    .collage-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 4rem;
+      padding: 2rem 0;
+    }
+
+    .collage-group {
+      flex: 1;
+      position: relative;
+      height: 71vh;
+      border-radius: 10px;
+    }
+
+    /* Imágenes del collage */
+    .collage-img, .collage-img-1 {
+      position: absolute;
+      width: 9rem;
+      border-radius: 1px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(112, 0, 112, 0.507);
+    }
+
+    /* ---------- Posiciones específicas de cada grupo ---------- */
+    /* Grupo Izquierda */
+    .grupo-izquierda {transform: translateY(-6%);}
+    .img-izquierda1 { top: -11%; left: 15%; transform: rotate(-6deg); z-index: 1;}
+    .img-izquierda2 { top: 20%; left: 27%; transform: rotate(-6deg); z-index: 2;}
+    .img-izquierda3 { top: -6%; left: 60%; transform: rotate(3deg); width:12rem}
+    .img-izquierda4 { top: 23%; left: -1%; transform: rotate(1deg); z-index: 1;}
+    .img-izquierda5 { top: 40%; left: 65%; transform: rotate(0deg); box-shadow: none; width: 10rem;}
+
+    /* Grupo Centro */
+    .grupo-centro {transform: translateX(-4%);}
+    .img-centro1 { top: 10%; left: -6%; transform: rotate(0deg); z-index: 4;}
+    .img-centro4 { top: 14%; left: 22%; transform: rotate(0deg); z-index: 3;}
+    .img-centro3 { top: 14%; left: 55%; transform: rotate(-4deg); z-index: 4;}
+    .img-centro2 { top: 10%; left: 81%; transform: rotate(2deg); z-index: 3;}
+    .img-centro5 { top: 43%; left: -6%; transform: rotate(-2deg);z-index: 3;}
+    .img-centro6 { top: 46%; left: 22%; transform: rotate(4deg); z-index: 1;}
+    .img-centro7 { top: 43%; left: 55%; transform: rotate(-4deg); z-index: 1;}
+    .img-centro8 { top: 43%; left: 81%; transform: rotate(2deg); z-index: 1;}
+
+    /* Grupo Derecha */
+    .grupo-derecha {transform: translate(-5%, -6%);}
+    .img-derecha1 { top: 0%; left: 2%; transform: rotate(0deg); z-index: 1;}
+    .img-derecha2 { top: -2%; left: 28%; transform: rotate(-5deg); z-index: 3;}
+    .img-derecha3 { top: 0%; left: 51%; transform: rotate(0deg); z-index: 2;}
+    .img-derecha4 { top: -1%; left: 77%; transform: rotate(3deg); z-index: 1;}
+
+    /* Hover de imágenes */
+    .collage-img:hover {
+      transform: scale(1.4) rotate(0deg);
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(235, 3, 235, 0.507);
+    }
+
+    /* ---------- Branding y logos ---------- */
+    .img1, .img2, .img3, .img4, .img5, .img6, .img7, .img8, .img9, .img10 {
+      position: absolute;
+    }
+
+    /* Posiciones para branding */
+    .img1 { top: 50%; left: 45%; transform: rotate(-6deg); width: 24rem; z-index: 2;}
+    .img2 { top: 50%; left: 65%; transform: rotate(5deg); width: 24rem; z-index: 1;}
+    .img3 { top: 18%; left: 43%; transform: rotate(0deg); width: 50rem; }
+    .img4 { top: 50%; left: 27%; transform: rotate(0deg); width: 15rem; }
+    .img5 { top: 50%; left: 12%; transform: rotate(0deg); width: 15rem; }
+    .img6 { top: 15%; left: 27%; transform: rotate(0deg); width: 15rem; }
+    .img7 { top: 15%; left: 12%; transform: rotate(0deg); width: 15rem; }
+    .img8 { top: 38%; left: 1%; transform: rotate(0deg); width: 30rem; }
+    .img9 { top: 20%; left: 35%; transform: rotate(0deg); width: 30rem; }
+    .img10 { top: 30%; left: 70%; transform: rotate(0deg); width: 30rem; }
+
+    /* ---------- Botones de navegación (pantallas) ---------- */
+    .flecha {
+      position: fixed;
+      top: 20px;
+      background: #a100f2;
+      color: white;
+      font-size: 2rem;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 52%;
+      z-index: 1000;
+    }
+
+    .flecha:hover {
+      background: #8200c4;
+    }
+
+    .izquierda { left: 10px; }
+    .derecha { right: 10px; }
+
+    /* ---------- Divisor visual entre pantallas ---------- */
+    .divisor {
+      width: 100%;
+      height: .9rem;
+      background-color: #a100f2;
+      margin: 24rem 0;
+      display: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.863);
+    }
+
+    .boton-branding-movil {
+      display: none;
+      margin: 1rem 0;
+    }
+
+    /* === MODAL PARA AMPLIAR IMÁGENES (solo móvil) === */
+    .modal {
+    display: none;
+    position: fixed;
+    z-index: 5000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    }
+
+    .modal-contenido {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #a100f2;
+    }
+
+    .cerrar-modal {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 6000;
+    }
+
+    /* ---------- Responsive para móviles ---------- */
+    @media (max-width: 768px) {
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        padding: 0;
+      }
+
+      /* Mostrar todas las pantallas */
+      .pantalla {
+        display: block !important;
+        min-height: auto;
+        padding-bottom:1rem;
+      }
+
+      /* Ajustes de título */
+      .titulo {
+        width: 100%;
+        height: auto;
+      }
+
+      /* Botón adaptado */
+      .neon-button {
+        width: 9rem;
+        height: 1.4rem;
+        font-size: 0.8rem;
+        top: -2rem;
+      }
+
+      .neon-button img {
+        height: 40px;
+      }
+      /* Grupo collage para móvil */
+      .collage-group {
+        transform: none !important;
+        height: 80vh;
+        width: 100%;
+      }
+
+      /* Grupo Izquierda móvil */
+      .img-izquierda1 {top: -3rem; left: 15%; transform: rotate(-6deg); scale: 1.3;}
+      .img-izquierda2 {top: 3.8rem; left: 28%; transform: rotate(-5deg); scale: 1.3;}
+      .img-izquierda3 {top: -.8rem; left: 69%; transform: rotate(2deg); scale: 2;}
+      .img-izquierda4 {top: 4.4rem; left: 1%; transform: rotate(1deg); scale: 1.3;}
+      .img-izquierda5 {top: 8.5rem; left: 68%; transform: rotate(0deg);scale: 1.5; box-shadow: none;}
+
+      /* Grupo Centro móvil */
+      .img-centro1 {top: -11rem; left: 5%; transform: rotate(0deg);}
+      .img-centro2 {top: -11rem; left: 70%; transform: rotate(1deg);}
+      .img-centro3 {top: -10.6rem; left: 50%; transform: rotate(-3deg);}
+      .img-centro4 {top: -10.5rem; left: 25%;transform: rotate(0deg);}
+      .img-centro5 {top: -5.8rem; left: 5%; transform: rotate(-1deg);}
+      .img-centro6 {top: -5.2rem; left: 26%; transform: rotate(3deg);}
+      .img-centro7 {top: -5.6rem; left: 50%; transform: rotate(-3deg);}
+      .img-centro8 {top: -5.6rem; left: 70%;transform: rotate(2deg);}
+
+      /* Grupo Derecha móvil */
+      .img-derecha1 {top: -10rem; left: 10%; transform: rotate(0deg);}
+      .img-derecha2 {top: -10.5rem; left: 30%; transform: rotate(-4deg);}
+      .img-derecha3 {top: -10rem; left: 50%; transform: rotate(0deg);}
+      .img-derecha4 {top: -10rem; left: 71%; transform: rotate(3deg);}
+
+      /* Branding móvil */
+      .img1 { top: 2rem !important; left: 7% !important; transform: rotate(-4deg); scale: 3; }
+      .img2 { top: 2rem !important; left: 68% !important; transform: rotate(2deg); scale: 3; }
+      .img3 { top: 15rem !important; left: 40% !important; transform: rotate(0deg); scale: 7; }
+
+      .img4 { top: 24rem !important; left: 70% !important; transform: rotate(0deg); scale: 2.7;}
+      .img5 { top: 24rem !important; left: 7% !important; transform: rotate(0deg); scale: 2.7;}
+      .img6 { top: 8rem !important; left: 70% !important; transform: rotate(0deg); scale: 2.7;}
+      .img7 { top: 8rem !important; left: 7% !important; transform: rotate(0deg); scale: 2.7;}
+
+      /* Anula el hover en móviles */
+      .collage-img:hover {
+        transform: none;
+        z-index: 1000;
+        box-shadow: none;
+      }
+
+      .collage-img, .collage-img-1 {
+        width: 5.5rem !important;
+        box-shadow: 0 1px 3px rgba(235, 3, 235, 0.507);
+      }
+
+      /* Ajustes para las imágenes grandes (logos) */
+      .img8, .img9, .img10 {
+        width: 90% !important;
+        left: 1% !important;
+        position: relative;
+        top: auto !important;
+        transform: none !important;
+        margin-bottom: 1rem;
+      }
+
+      /* Cambio de columna para grupos */
+      .seccion-grupos {
+        flex-direction: column;
+        gap: 9rem;
+        display: flex;
+      }
+
+      .grupo-izquierda,
+      .grupo-centro,
+      .grupo-derecha {
+        scale: 0.9;
+      }
+
+      .collage-container {
+        scale: .7;
+      }
+
+      .collage-container-2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Ocultar flechas en móvil */
+      .flecha {
+        display: none !important;
+      }
+
+      /* Mostrar divisor */
+      .divisor{
+        display: block;
+      }
+
+      /* Mostrar botón oculto */
+      .seccion-boton-not{
+        display: flex;
+      }
+
+      #brandig.seccion-boton {
+        margin-top: -23rem !important;
+      }
+
+      #logos.seccion-boton {
+        margin-top: -23rem !important;
+      }
+
+      .boton-branding-movil {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 18rem;
+      }
+      .modal {
+          display: none; /* se controla desde JS */
+      }
+
+      .modal-contenido {
+          max-width: 95%;
+          max-height: 80%;
+      }
+
+      .cerrar-modal {
+          top: 0.5rem;
+          right: 1rem;
+          font-size: 1.8rem;
+          color: red;
+      }
+    }
+</style>
+</head>
+<body>
+<!-- MODAL solo para móviles -->
+<div id="modal" class="modal" onclick="cerrarModal(event)">
+  <span class="cerrar-modal" onclick="cerrarModal(event)">✖</span>
+  <img id="modal-img" class="modal-contenido" src="" alt="Imagen ampliada">
+</div>
+
+
+  <!-- Botones de navegación entre pantallas -->
+  <button class="flecha izquierda" id="flechaIzquierda" onclick="cambiarPantalla(-1)">⬅</button>
+  <button class="flecha derecha" onclick="cambiarPantalla(1)">➡</button>
+
+  <!-- PANTALLA 1: Título y grupos de social media -->
+  <div class="pantalla activa">
+    <section class="primera-section">
+      <img class="titulo" src="Tipografia/Web_QketZá-16.png" alt="Título" />
+    </section>
+
+    <!-- Botón principal -->
+    <section class="seccion-boton">
+      <button class="neon-button">
+        <img src="Tipografia/Web_QketZá-17.png" alt="Botón imagen" />
+      </button>
+    </section>
+
+    <!-- Collage de imágenes por grupo -->
+    <section class="seccion-grupos">
+      <!-- Grupo izquierda -->
+      <div class="grupo-izquierda collage-group">
+        <img src="Imagenes/social_media/01/SOCIAL_MEDIA_A (4).png" class="collage-img img-izquierda1" />
+        <img src="Imagenes/social_media/01/SOCIAL_MEDIA_A (1).jpg" class="collage-img img-izquierda2" />
+        <img src="Imagenes/social_media/01/SOCIAL_MEDIA_A (3).jpg" class="collage-img img-izquierda3" />
+        <img src="Imagenes/social_media/01/SOCIAL_MEDIA_A (2).jpg" class="collage-img img-izquierda4" />
+        <img src="Imagenes/social_media/01/SOCIAL_MEDIA_A (5).png" class="collage-img img-izquierda5" />
+      </div>
+
+      <!-- Botón móvil debajo del grupo -->
+      <section class="seccion-boton-not">
+        <button class="neon-button">
+          <img src="Tipografia/Web_QketZá-17.png" alt="Botón imagen" />
+        </button>
+      </section>
+
+      <!-- Grupo centro -->
+      <div class="grupo-centro collage-group">
+        <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (1).jpg" class="collage-img img-centro1" />
+        <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (5).jpg" class="collage-img img-centro2" />
+        <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (2).jpg" class="collage-img img-centro3" />
+        <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (4).jpg" class="collage-img img-centro4" />
+        <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (6).jpg" class="collage-img img-centro5" />
+        <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (7).jpg" class="collage-img img-centro6" />
+        <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (3).jpg" class="collage-img img-centro7" />
+        <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (8).jpg" class="collage-img img-centro8" />
+      </div>
+
+      <!-- Botón móvil debajo del grupo -->
+      <section class="seccion-boton-not">
+        <button class="neon-button">
+          <img src="Tipografia/Web_QketZá-17.png" alt="Botón imagen" />
+        </button>
+      </section>
+
+      <!-- Grupo derecha -->
+      <div class="grupo-derecha collage-group">
+        <img src="Imagenes/social_media/03/SOCIAL_MEDIA_C (3).png" class="collage-img img-derecha1" />
+        <img src="Imagenes/social_media/03/SOCIAL_MEDIA_C (2).png" class="collage-img img-derecha2" />
+        <img src="Imagenes/social_media/03/SOCIAL_MEDIA_C (4).png" class="collage-img img-derecha3" />
+        <img src="Imagenes/social_media/03/SOCIAL_MEDIA_C (1).jpg" class="collage-img img-derecha4" />
+      </div>
+    </section>
+  </div>
+
+  <!-- Divisor visual entre pantallas -->
+  <div class="divisor" style="margin-top: -10%;"></div>
+
+  <!-- PANTALLA 2: Branding -->
+  <div class="pantalla">
+    <section id="brandig" class="seccion-boton">
+      <button class="neon-button"><img src="Tipografia/Web_QketZá-18.png" /></button>
+    </section>
+
+    <section class="collage-container">
+      <img src="Imagenes/brandig/01/BRANDING-A (1).png" class="collage-img img1"/>
+      <img src="Imagenes/brandig/01/BRANDING-A (2).png" class="collage-img img2"/>
+      <img src="Imagenes/brandig/01/BRANDING-A (3).png" class="collage-img img3"/>
+    </section>
+
+    <section class="seccion-boton boton-branding-movil">
+      <div class="neon-button">
+        <img src="Tipografia/Web_QketZá-18.png" alt="Branding" />
+      </div>
+    </section>
+
+    <section class="collage-container">
+      <img src="Imagenes/brandig/02/BRANDING-B (1).png" class="collage-img img4"/>
+      <img src="Imagenes/brandig/02/BRANDING-B (2).png" class="collage-img img5"/>
+      <img src="Imagenes/brandig/02/BRANDING-B (3).png" class="collage-img img6"/>
+      <img src="Imagenes/brandig/02/BRANDING-B (4).png" class="collage-img img7"/>
+    </section>
+  </div>
+
+  <!-- Divisor visual entre pantallas -->
+  <div class="divisor"></div>
+
+  <!-- PANTALLA 3: Logos -->
+  <div class="pantalla">
+    <section id="logos" class="seccion-boton" style="margin-top: 4rem;">
+      <button class="neon-button"><img src="Tipografia/Web_QketZá-19.png" /></button>
+    </section>
+
+    <section class="collage-container-2">
+      <img src="Imagenes/logos/01/LOGOS-A (1).png" class="collage-img-not-shadow img8" />
+      <img src="Imagenes/logos/01/LOGOS-A (2).png" class="collage-img-not-shadow img9" />
+      <img src="Imagenes/logos/01/LOGOS-A (3).png" class="collage-img-not-shadow img10" />
+    </section>
+  </div>
+
+  <!-- Script para navegación entre pantallas -->
+  <script>
+    let pantallaActual = 0;
+    const pantallas = document.querySelectorAll('.pantalla');
+    const flechaIzquierda = document.getElementById('flechaIzquierda');
+
+    function mostrarPantalla(index) {
+      pantallas.forEach((p, i) => {
+        p.classList.remove('activa');
+        if (i === index) p.classList.add('activa');
+      });
+      flechaIzquierda.style.display = index === 0 ? 'none' : 'flex';
+    }
+
+    function cambiarPantalla(direccion) {
+      pantallaActual += direccion;
+      if (pantallaActual < 0) pantallaActual = 0;
+      if (pantallaActual >= pantallas.length) pantallaActual = pantallas.length - 1;
+      mostrarPantalla(pantallaActual);
+    }
+
+    // Inicial
+    mostrarPantalla(pantallaActual);
+  </script>
+  <!--Script para ver imagen completa-->
+<script>
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modal-img");
+
+  function habilitarModalSoloMovil() {
+    const esMovil = window.innerWidth <= 768;
+    document.querySelectorAll(".collage-img, .collage-img-not-shadow").forEach(img => {
+      img.onclick = esMovil ? () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      } : null;
+    });
+  }
+
+  function cerrarModal(event) {
+    if (event.target === modal || event.target.classList.contains('cerrar-modal')) {
+      modal.style.display = "none";
+      modalImg.src = "";
+    }
+  }
+
+  // Ejecutar al cargar y cuando se cambia tamaño
+  window.addEventListener("load", habilitarModalSoloMovil);
+  window.addEventListener("resize", habilitarModalSoloMovil);
+</script>
+
+
+</body>
+</html>

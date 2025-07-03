@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    section img {
+      margin-top: -4rem;
+      height: 27rem;
+      width: 60rem;
+      object-fit: contain;
+      max-width: 90vw;
+      animation: palpitar 1s infinite;
+    }
+
+    .neon-button {
+      margin-top: -2.5rem;
+      background: #a100f2;
+      border: 2px solid #a100f2;
+      border-radius: 30px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      font-weight: bold;
+      text-shadow:
+        0 0 5px #a100f2,
+        0 0 10px #a100f2,
+        0 0 20px #a100f2,
+        0 0 40px #a100f2;
+      box-shadow:
+        0 0 5px #a100f2,
+        0 0 15px #a100f2,
+        0 0 30px #a100f2;
+      transition: transform 0.2s;
+      width: 15rem;
+      height: 3rem;
+      max-width: 80vw;
+      text-decoration: none;
+    }
+
+    .neon-button:hover {
+      transform: scale(1.05);
+    }
+
+    .neon-button img {
+      height: 2.5rem;
+      width: auto;
+    }
+    @keyframes palpitar {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    @media (max-width: 768px) {
+      body {
+        background-image: url(Fondos/Web_QketZá_fondo_3.png);
+        background-size: cover;          /* Hace que cubra toda la pantalla */
+        background-position: center;     /* Centra la imagen */
+        background-repeat: no-repeat;    /* Evita que se repita */
+      }
+
+      section img {
+        height: auto;
+        width: 100%;
+        margin-top: -2rem;
+      }
+
+      .neon-button {
+        margin-top: 1rem;
+        width: 50%;
+        height: 3rem;
+      }
+
+      .neon-button img {
+        height: 4rem;
+      }
+      p{
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section>
+    <img src="Tipografia/Web_QketZá-14.png" alt="Imagen centrada" />
+  </section>
+<a class="neon-button" href="https://wa.me/5219992246197?text=Hola%2C%20estoy%20interesado%20en%20cotizar%20una%20landing%20page%20con%20QketZ%C3%A1.%20%C2%A1Gracias!" target="_blank">
+  <img src="Tipografia/Web_QketZá-15.png" alt="Cotiza Aquí" />
+</a>
+
+  <p style="text-align: center; font-size: 14px; color: #ffffff; margin-top: 4rem;">
+  Encuentra lo que más se adapta a ti y déjate sorprender por la esencia de QketZá. <br>
+  © 2025 QketZá. Todos los derechos reservados.
+</p>
+
+</body>
+</html>

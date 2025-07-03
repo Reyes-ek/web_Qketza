@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QKETZA</title>
+    <!-- Metadatos Open Graph para compartir -->
+  <meta property="og:title" content="QKETZA - Arte y Cultura" />
+  <meta property="og:description" content="Descubre el mundo de QKETZA: creatividad, cultura y diseño mexicano." />
+  <meta property="og:image" content="Imagenes/Logo_QketZá_SVG.svg" />
+  <meta property="og:url" content="https://qketza.netlify.app//>
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="shortcut icon" href="Imagenes/Logo_QketZá_SVG.svg" type="image/x-icon">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-image: url(Fondos/Web_QketZá_fondo_1.png);
+      background-size: cover;          /* Hace que cubra toda la pantalla */
+      background-position: center;     /* Centra la imagen */
+      background-repeat: no-repeat;    /* Evita que se repita */
+      transition: background-image 0.5s ease-in-out;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    nav {
+      width: 100%;
+      padding: 1rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+      background-color: transparent;
+    }
+
+    .logo img {
+      height: 70px;
+      max-width: 100%;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .links a::before {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: magenta;
+      transition: 0.3s;
+    }
+
+    .links a:hover::before {
+      width: 100%;
+    }
+
+    .links a:hover {
+      color: magenta;
+    }
+
+    #contenido {
+      display: block;
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      transition: opacity 0.3s ease-in-out;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: transparent;
+    }
+
+    /* Secciones móviles: ocultas en PC */
+    .seccion-movil {
+      display: none;
+      width: 100%;
+      max-width: 2500px;
+      margin: 0rem auto;
+      background-color: transparent;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      height: 80vh; /* altura para que el iframe tenga espacio */
+      position: relative;
+    }
+
+    .seccion-movil iframe {
+      height: 80vh;
+
+      position: relative;
+      height: 100%;
+      top: auto;
+      left: auto;
+    }
+    
+    #planes{
+      height: 110vh;
+    }
+    #planes iframe{
+       height: 100%;
+    }
+
+    #trabajos {
+      height: 290vh; /* altura del contenedor, no solo iframe */
+    }
+
+    #trabajos iframe {
+      height: 100%; /* para que el iframe ocupe todo el alto del contenedor */
+    }
+
+    #landing{
+      height: 60vh;
+    }
+    #planes{
+      height: 82vh;
+    }
+    #quienes{
+      height:74vh ;
+    }
+
+
+    @media (max-width: 768px) {
+      body {
+        background-image: url(Fondos/Web_QketZá_fondo_1.png);
+      background-size: 2100px 15.7%; 
+        background-position: top center;
+        background-repeat: no-repeat;
+      }
+      nav {
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+        background-color:transparent;
+      }
+
+      .logo img {
+        height: 85px;
+        margin-bottom: 1rem;
+      }
+
+      .links {
+        flex-direction: row;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .links a {
+        font-size: 3.1vw; 
+      }
+
+      #contenido {
+        display: none;
+      }
+
+      .seccion-movil {
+        display: block;
+      }
+      .planes_a{
+        display: none;
+      }
+      .landing_a{
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo" data-aos="zoom-in">
+      <a href="index.html"><img src="Imagenes/Web_QketZá_Logo.png" alt="Logo QKETZA" /></a>
+    </div>
+    <div class="links">
+      <a href="#" onclick="navegar(event, 'quienes_somos.html', 'Fondos/Web_QketZá_fondo_1.png', 'quienes')">¿QUIÉNES SOMOS?</a>
+      <a class="planes_a" href="#" onclick="navegar(event, 'planes_de_diseños.html', 'Fondos/Web_QketZá_fondo_2.png', 'planes')">PLANES DE DISEÑO</a>
+      <a class="landing_a" href="#" onclick="navegar(event, 'landing.html', 'Fondos/Web_QketZá_fondo_3.png', 'landing')">¿LANDING PAGE?</a>
+      <a href="#" onclick="navegar(event, 'pr-tr.html', 'Fondos/Web_QketZá_fondo_7.png', 'trabajos')">NUESTROS TRABAJOS</a>
+      <a href="#" onclick="navegar(event, 'contacto.html', 'Fondos/Web_QketZá_fondo_7.png', 'contacto')">CONTACTO</a>
+    </div>
+  </nav>
+
+  <!-- Vista PC -->
+  <section id="contenido">
+    <iframe id="miIframe" src="quienes_somos.html" loading="lazy"></iframe>
+  </section>
+
+  <!-- Vista móvil: cada sección con iframe -->
+  <div class="seccion-movil" id="quienes">
+    <iframe src="quienes_somos.html" loading="lazy" title="Quiénes Somos"></iframe>
+  </div>
+  <div class="seccion-movil" id="planes">
+    <iframe src="planes_de_diseños.html" loading="lazy" title="Planes de Diseño"></iframe>
+  </div>
+  <div class="seccion-movil" id="landing">
+    <iframe src="landing.html" loading="lazy" title="Landing Page"></iframe>
+  </div>
+  <div class="seccion-movil" id="trabajos">
+    <iframe src="pr-tr.html" loading="lazy" title="Nuestros Trabajos"></iframe>
+  </div>
+  <div class="seccion-movil" id="contacto">
+    <iframe src="contacto.html" loading="lazy" title="Contacto"></iframe>
+  </div>
+
+  <script>
+    function esMovil() {
+      return window.innerWidth <= 768;
+    }
+
+    function navegar(e, pagina, fondo, anclaId) {
+      e.preventDefault();
+      if (esMovil()) {
+        document.getElementById(anclaId).scrollIntoView({ behavior: 'smooth' });
+      } else {
+        const iframe = document.getElementById("miIframe");
+        iframe.style.opacity = 0;
+        setTimeout(() => {
+          iframe.src = pagina;
+          document.body.style.backgroundImage = `url('${fondo}')`;
+          iframe.style.opacity = 1;
+        }, 200);
+      }
+    }
+  </script>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ offset: 0 });
+  </script>
+</body>
+</html>

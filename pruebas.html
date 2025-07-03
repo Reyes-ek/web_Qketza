@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QKETZA Social Media Collage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #e5e5e5;
+      overflow-x: hidden;
+    }
+    .collage-fila {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      position: relative;
+      margin: 2rem 0;
+      flex-wrap: nowrap;
+    }
+    .columna {
+      position: relative;
+      width: 320px;
+      height: 550px;
+    }
+    .columna img {
+      position: absolute;
+      width: 160px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+      cursor: pointer;
+      object-fit: cover;
+    }
+    .columna img:hover {
+      transform: scale(1.1);
+      z-index: 2;
+    }
+
+    /* Columnas con posiciones exactas tal como la referencia */
+    .columna-izquierda img:nth-child(1) { top: 10px; left: 0px; transform: rotate(-12deg); }
+    .columna-izquierda img:nth-child(2) { top: 20px; left: 100px; transform: rotate(8deg); }
+    .columna-izquierda img:nth-child(3) { top: 200px; left: 20px; transform: rotate(-8deg); }
+    .columna-izquierda img:nth-child(4) { top: 220px; left: 120px; transform: rotate(10deg); }
+
+    .columna-centro img:nth-child(1) { top: 0px; left: 0px; transform: rotate(-10deg); }
+    .columna-centro img:nth-child(2) { top: 20px; left: 120px; transform: rotate(10deg); }
+    .columna-centro img:nth-child(3) { top: 200px; left: 40px; transform: rotate(-5deg); }
+    .columna-centro img:nth-child(4) { top: 220px; left: 160px; transform: rotate(12deg); }
+    .columna-centro img:nth-child(5) { top: 400px; left: 0px; transform: rotate(-12deg); }
+    .columna-centro img:nth-child(6) { top: 420px; left: 120px; transform: rotate(8deg); }
+    .columna-centro img:nth-child(7) { top: 580px; left: 40px; transform: rotate(-6deg); }
+    .columna-centro img:nth-child(8) { top: 600px; left: 160px; transform: rotate(6deg); }
+
+    .columna-derecha img:nth-child(1) { top: 10px; left: 0px; transform: rotate(-11deg); }
+    .columna-derecha img:nth-child(2) { top: 20px; left: 120px; transform: rotate(11deg); }
+    .columna-derecha img:nth-child(3) { top: 200px; left: 40px; transform: rotate(-7deg); }
+    .columna-derecha img:nth-child(4) { top: 220px; left: 160px; transform: rotate(9deg); }
+
+    @media screen and (max-width: 768px) {
+      .collage-fila {
+        flex-direction: column;
+        align-items: center;
+      }
+      .columna {
+        width: 90%;
+        height: auto;
+        margin-bottom: 2rem;
+      }
+      .columna img {
+        width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="collage-fila">
+    <div class="columna columna-izquierda">
+      <img src="Imagenes/social_media/01/SOCIAL_MEDIA_A (1).jpg" alt="A1"/>
+      <img src="Imagenes/social_media/01/SOCIAL_MEDIA_A (2).jpg" alt="A2"/>
+      <img src="Imagenes/social_media/01/SOCIAL_MEDIA_A (4).png" alt="A4"/>
+      <img src="Imagenes/social_media/01/SOCIAL_MEDIA_A (3).jpg" alt="A3"/>
+    </div>
+
+    <div class="columna columna-centro">
+      <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (1).jpg" alt="B1"/>
+      <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (2).jpg" alt="B2"/>
+      <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (3).jpg" alt="B3"/>
+      <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (4).jpg" alt="B4"/>
+      <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (5).jpg" alt="B5"/>
+      <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (6).jpg" alt="B6"/>
+      <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (7).jpg" alt="B7"/>
+      <img src="Imagenes/social_media/02/SOCIAL_MEDIA_B (8).jpg" alt="B8"/>
+    </div>
+
+    <div class="columna columna-derecha">
+      <img src="Imagenes/09-a.jpg" alt="D1"/>
+      <img src="Imagenes/10-a.jpg" alt="D2"/>
+      <img src="Imagenes/11-a.png" alt="D3"/>
+      <img src="Imagenes/extra1.jpg" alt="D4"/>
+    </div>
+  </section>
+</body>
+</html>
